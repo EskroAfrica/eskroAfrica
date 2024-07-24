@@ -6,6 +6,7 @@
   
   #scroll-text {
     text-align: right;
+    font-size: large;
   
     /* animation properties */
     -moz-transform: translateX(-100%);

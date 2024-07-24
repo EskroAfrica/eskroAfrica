@@ -4,7 +4,7 @@ const HomeHeroSection = () => {
     return (
         <div className='relative' >
             <div className='absolute left-0 right-0 top-1/2 transform -translate-y-1/2 '>
-                <h1 className='font-bold text-7xl leading-tight'>
+                <h1 className='font-bold text-7xl leading-tight ps-20'>
                     Buying <br />
                     Affordable Items <br />
                     Just Got Better
@@ -19,8 +19,12 @@ const HomeHeroSection = () => {
                 <img className='w-64 h-64 absolute bottom-80 right-72' src="/assets/Ellipse920.png" alt="" />
             </div>
 
-            <div className='bg-green-600 z-auto'>
-                <Homeslider />
+            <div className='absolute w-full px-10 bg-yellow-600 z-20' style={{ transform: 'skewY(6deg)' }}>
+                <Homeslider text='Shop By December 16 To Ensure Delivery Before Xmas Shop By December 16 To Ensure Delivery Before Xmas' />
+            </div>
+
+            <div className='absolute w-full px-10 bg-blue-900 z-20' style={{ transform: 'skewY(-6deg)' }}>
+                <Homeslider text='Shop By December 16 To Ensure Delivery Before Xmas Shop By December 16 To Ensure Delivery Before Xmas' />
             </div>
 
         </div>
