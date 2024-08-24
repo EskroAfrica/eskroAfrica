@@ -21,7 +21,7 @@ const ProductSection = () => {
     <div className='pb-10 pt-6'>
       <div className='pb-10'>
         <h3 className='text-4xl font-semibold lora-400 text-center text-primary'> Products</h3>
-        <p className='text-center w-[50%] mx-auto py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
+        <p className='text-center w-[40%] mx-auto py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
       </div>
 
       <div className="flex space-x-10 w-[60%] mx-auto pb-6">
