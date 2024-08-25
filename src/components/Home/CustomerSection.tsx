@@ -38,7 +38,7 @@ const CustomerSection = () => {
 
 
   return (
-    <div className='pb-10 pt-6'>
+    <div className='py-14  bg-base'>
       <div className='pb-10'>
         <h3 className='text-4xl font-semibold lora-400 text-center text-primary'> Follow Us On Instagram</h3>
         <p className='text-center w-[40%] mx-auto py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>

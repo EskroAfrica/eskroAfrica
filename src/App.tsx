@@ -5,7 +5,7 @@ import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="px-12">
+    <div className="">
       <Home />
     </div>
   );
