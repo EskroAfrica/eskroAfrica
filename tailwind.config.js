@@ -29,7 +29,7 @@ module.exports = {
         'secondary800' : '#a17800', 
         'secondary900' : '#7f5f00', 
         'secondary1000' : '#5d4600', 
-        'base' : '#fafafa',
+        'baseColor' : '#fafafa',
         'neutrals100' :'#e3e3e3',
         'neutrals200' :'#cccbcb',
         'neutrals300' :'#b5b3b3',

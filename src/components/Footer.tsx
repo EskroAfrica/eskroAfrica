@@ -1,12 +1,13 @@
 import React from 'react'
+import esk from '../assets/Frame7.png'
 
 const Footer = () => {
   const tags = ["Game", "iPhone", "TV", "Asus Laptop", "Macbook", "SSD", "Graphics Card", "Power Bank", "Smart TV", "Speaker", "Tablet", "Microwave", "Samsung"]
   return (
-    <div className="bg-base py-10">
+    <div className="bg-baseColor py-10">
       <div className='flex justify-between w-[95%] mx-auto'>
         <div className="basis-1/5">
-        <img className='' src="/assets/Frame7.png" alt="" />
+        <img className='' src={esk} alt="" />
         <p>Customer supports: </p>
         </div>
         <div className="basis-1/5">
