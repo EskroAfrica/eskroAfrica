@@ -1,5 +1,5 @@
 export interface ButtonProps {
     text: string;
     className?: string;
-    onClick?: () => void;
+    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   }

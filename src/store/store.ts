@@ -3,12 +3,14 @@ import { configureStore } from '@reduxjs/toolkit';
 import itemsReducer from './itemsSlice';
 import customerReducer from './customerReviewsSlice'
 import modalReducer from './modalsSlice'
+import authReducer from './authSlice'
 
 export const store = configureStore({
   reducer: {
     items: itemsReducer,
     customerReviews: customerReducer, 
-    modals: modalReducer
+    modals: modalReducer, 
+    auth: authReducer
   },
 });
 

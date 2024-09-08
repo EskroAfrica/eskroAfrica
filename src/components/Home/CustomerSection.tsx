@@ -47,20 +47,20 @@ const CustomerSection = () => {
     <div className='py-14  bg-baseColor'>
       <div className='pb-10'>
         <h3 className='text-4xl font-semibold lora-400 text-center text-primary'> Follow Us On Instagram</h3>
-        <p className='text-center w-[60%] xl:w-[40%] mx-auto py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
+        <p className='text-center w-full md:w-[60%] xl:w-[40%] mx-auto py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
       </div>
 
       <div className='pb-24 px-10'>
         <div className="flex justify-center items-center ">
           {[...Array(5)].map((_, index) => (
-            <div key={index} className=''><img src={pictureArray[index]} alt="" /></div>
+            <div key={index} className=''><img src={pictureArray[index]} alt="customer's images" /></div>
           ))}
         </div>
       </div>
 
       <div className='pb-10'>
         <h3 className='text-4xl font-semibold lora-400 text-center text-primary'> This Is What Our Customers Say </h3>
-        <p className='text-center w-[60%] xl:w-[40%] mx-auto py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
+        <p className='text-center w-full md:w-[60%] xl:w-[40%] mx-auto py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
       </div>
 
       <div className='hidden lg:block'>
@@ -108,17 +108,19 @@ const CustomerSection = () => {
         </div>
       </div>
 
+
+          {/* for small screens */}
       <div className='w-[90%] mx-auto block lg:hidden '>
-        <div className={`relative h-96 bg-baseColor rounded-xl shadow-lg px-10 flex items-center transition-transform duration-300 ${animation ? 'translate-x-[-2%]' : 'translate-x-0'} z-10`}>
-            <div className='basis-1/3'>
-              <div className='relative mt-3 h-60 w-60 bg-neutral-300'></div>
-              <div className='absolute left-14 bottom-20 h-60 w-60 '> <img className='object-cover w-full h-full' src={customerReviews[count].image} alt="" /></div>
+        <div className={`relative h-96 bg-baseColor rounded-xl shadow-lg px-4 flex-col items-center transition-transform duration-300 ${animation ? 'translate-x-[-2%]' : 'translate-x-0'}`}>
+            <div className=''>
+              <div className='relative mt-3 h-32 w-32 bg-neutral-300'></div>
+              <div className='absolute left-6 top-2 h-32 w-32 '> <img className='object-cover w-full h-full' src={customerReviews[count].image} alt="" /></div>
             </div>
-            <div className='basis-2/3 px-10'>
-              <p className='pb-7 text-neutral-500'> "{customerReviews[count].comment}"</p>
+            <div className='px-2 py-6'>
+              <p className='pb-3 text-sm text-neutral-500'> "{customerReviews[count].comment}"</p>
               <StarRating rating={customerReviews[count].rating} />
-              <hr className='mt-6 border-t-1 border-black w-[50%]' />
-              <p className='text-2xl pt-6'>{customerReviews[count].customerName}</p>
+              <hr className='mt-3 border-t-1 border-black w-[50%]' />
+              <p className='text-xl pt-3'>{customerReviews[count].customerName}</p>
               <p>{customerReviews[count].occupation}</p>
             </div>
           </div>

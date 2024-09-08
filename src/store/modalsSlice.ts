@@ -1,33 +1,26 @@
-// modalSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface ModalState {
-    modals: { [key: string]: boolean };
-  }
+  openModalKey: string | null;
+}
 
-// Define the initial state using the ModalState type
 const initialState: ModalState = {
-    modals: {}
+  openModalKey: null,
 };
 
-// Create the slice with type annotations
 const modalsSlice = createSlice({
-    name: 'modals',
-    initialState,
-    reducers: {
-      // Action to open a modal
-      openModal: (state, action: PayloadAction<string>) => {
-        state.modals[action.payload] = true;
-      },
-      // Action to close a modal
-      closeModal: (state, action: PayloadAction<string>) => {
-        state.modals[action.payload] = false;
-      },
+  name: 'modals',
+  initialState,
+  reducers: {
+    openModal(state, action: PayloadAction<string>) {
+      state.openModalKey = action.payload;
     },
-  });
+    closeModal(state) {
+      state.openModalKey = null;
+    },
+  },
+});
 
-// Export the actions
 export const { openModal, closeModal } = modalsSlice.actions;
 
-// Export the reducer to be included in the store
 export default modalsSlice.reducer;

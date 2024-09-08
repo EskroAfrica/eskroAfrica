@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
 import StarRating from '../StarRating';
@@ -10,8 +10,10 @@ const HotBids = () => {
     const [count, setCount] = useState<number>(0);
     const items = useSelector((state: RootState) => state.items.items);
     const [prevValue, setPrevValue] = useState<number>(items.length - 1);
+    const [animation, setAnimation] = useState<boolean>(false);
 
     const increaseCount = () => {
+        setAnimation(true)
         setCount((prevCount) => {
             const newCount = prevCount === items.length - 1 ? 0 : prevCount + 1;
             setPrevValue(newCount === 0 ? items.length - 1 : newCount - 1); // Update b to be count - 1, cycling as needed
@@ -20,6 +22,7 @@ const HotBids = () => {
     };
 
     const decreaseCount = () => {
+        setAnimation(true)
         setCount((prevCount) => {
             const newCount = prevCount === 0 ? items.length - 1 : prevCount - 1;
             setPrevValue(newCount === 0 ? items.length - 1 : newCount - 1); // Update b to be count - 1, cycling as needed
@@ -27,18 +30,26 @@ const HotBids = () => {
         });
     };
 
+    useEffect(() => {
+        if (animation) {
+          // Reset animation state after transition
+          const timer = setTimeout(() => setAnimation(false), 300); // Duration of transition (300ms)
+          return () => clearTimeout(timer);
+        }
+      }, [count, animation]);
+
     return (
         <div className='bg-neutral-100'>
             <div className='pt-28 w-[90%] mx-auto'>
-                <div className='flex justify-between items-center items space-x-6'>
-                    <div className='w-[50%] lg:w-[33%] pe-10'>
-                        <h3 className='text-3xl lg:text-4xl font-semibold lora-400  text-primary'> Hot Bids Of The Day</h3>
-                        <p className='w-[90%] py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
+                <div className='block sm:flex justify-between items-center items md:space-x-6'>
+                    <div className=' w-full md:w-[50%] lg:w-[33%] pe-0 md:pe-10 text-center md:text-left'>
+                        <h3 className='text-3xl lg:text-4xl font-semibold lora-400 text-primary'> Hot Bids Of The Day</h3>
+                        <p className='w-full md:w-[90%] py-5'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus est molestias sit amet laboriosam. Eaque perferendis minus culpa aliquid veritatis!</p>
                         <p className='font-semibold text-2xl text-neutral-500 pb-3'>Hurry, Before It's Too Late</p>
                         <CountDown />
                     </div>
 
-                    <div key={items[count].id} className=" w-[50%] lg:w-[30%] bg-baseColor px-5 py-4 mb-4 rounded-xl">
+                    <div key={items[count].id} className={`w-full md:w-[50%] lg:w-[30%] bg-baseColor px-5 py-4 mb-4 rounded-xl mt-6 md:mt-0 transition-transform duration-300 ${animation ? 'translate-x-[-2%]' : 'translate-x-0'}`}>
                         <div className=''>
                             {/* <div className='h-48 w-full overflow-hidden'><img className='mx-auto h-full w-full object-contain' src={item.image} alt="" /></div> */}
                             <div className="h-60 w-full overflow-hidden">
@@ -77,7 +88,7 @@ const HotBids = () => {
                 </div>
             </div>
 
-            <div className='flex justify-center gap-x-3 mx-auto w-20 py-10'>
+            <div className='flex justify-center gap-x-3 mx-auto w-20 py-5'>
                 <div onClick={decreaseCount} className='bg-baseColor w-7 h-7 rounded-2xl border flex justify-center items-center border-neutral-300 cursor-pointer'> <FaArrowLeft /> </div>
                 <div onClick={increaseCount} className='bg-baseColor w-7 h-7 rounded-2xl border flex justify-center items-center border-neutral-300 cursor-pointer'> <FaArrowRight /></div>
             </div>

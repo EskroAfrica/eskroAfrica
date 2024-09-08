@@ -7,10 +7,10 @@ interface TimeBoxProps {
 
 const TimeBox: React.FC<TimeBoxProps> = ({ value, label }) => (
   <div>
-      <div className="flex flex-col items-center justify-center bg-baseColor shadow-lg text-neutral-500 text-2xl rounded-lg p-4 w-24 h-24">
-        <span className="text-5xl font-bold">{value.toString().padStart(2, '0')}</span>
+      <div className="flex flex-col items-center justify-center bg-baseColor shadow-lg text-neutral-500 rounded-lg p-4 w-16 lg:w-24 h-16 lg:h-24">
+        <span className="text-2xl md:text-3xl lg:text-4xl font-bold">{value.toString().padStart(2, '0')}</span>
       </div>
-      <p className="text-neutral-500 text-xl text-center">{label}</p>
+      <p className="text-neutral-500 text-sm md:text-xl text-center">{label}</p>
   </div>
 );
 
