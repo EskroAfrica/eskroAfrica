@@ -7,9 +7,8 @@ interface Credentials {
 }
 
 interface SignupPayload {
-  username: string;
-  password: string;
   email: string;
+  isSeller: boolean;
 }
 
 interface RefreshTokenResponse {
@@ -33,7 +32,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
 
     signup: builder.mutation<void, SignupPayload>({
       query: (signupData) => ({
-        url: '/Auth/Signup',
+        url: '/users',
         method: 'POST',
         body: signupData,
       }),

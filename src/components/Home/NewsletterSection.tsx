@@ -11,7 +11,7 @@ const NewsletterSection = () => {
         </div>
         <div className="flex-row w-[90%] md:w-[70%] xl:w-[50%] mx-auto justify-center ">
           <input className='w-full py-4 px-3 rounded-md border border-neutral-400' type='email' placeholder='michael@ymail.com'/>
-          <Button text='Subscribe' className='mt-4 bg-primary text-baseColor px-10 w-44 mx-auto py-4 rounded-lg' />
+          <div className='w-[50%] mx-auto '><Button text='Subscribe' className='mt-4 bg-primary text-baseColor px-10 mx-auto py-4 rounded-lg' /></div>
           </div>
       </div>
     </div>

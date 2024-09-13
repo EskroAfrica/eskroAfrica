@@ -10,13 +10,11 @@ import HotBids from '../components/Home/HotBids'
 const Home = () => {
   return (
     <div>
-        <Navbar />
         <HomeHeroSection />
         <HotBids />
         <ProductSection />
         <CustomerSection /> 
         <NewsletterSection />
-        <Footer /> 
     </div>
   )
 }

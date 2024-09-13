@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store/store"; // Adjust the import path as needed
+import { RootState } from "../store/store"; 
 
 // Define the shape of the state
 interface AuthState {
-  user: string | null; // Adjust the type based on the user object structure
+  user: string | null; 
   token: string | null;
 }
 
@@ -15,7 +15,7 @@ const initialState: AuthState = {
 
 // Define the payload types for actions
 interface SetCredentialsPayload {
-  user?: string; // Adjust based on user object structure
+  user?: string; 
   accessToken: string;
 }
 

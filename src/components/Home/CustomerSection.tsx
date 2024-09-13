@@ -111,19 +111,35 @@ const CustomerSection = () => {
 
           {/* for small screens */}
       <div className='w-[90%] mx-auto block lg:hidden '>
-        <div className={`relative h-96 bg-baseColor rounded-xl shadow-lg px-4 flex-col items-center transition-transform duration-300 ${animation ? 'translate-x-[-2%]' : 'translate-x-0'}`}>
+        {/* <div className={`relative h-80 bg-baseColor rounded-xl shadow-lg px-4 flex-col  justify-between items-start transition-transform duration-300 ${animation ? 'translate-x-[-2%]' : 'translate-x-0'}`}>
             <div className=''>
               <div className='relative mt-3 h-32 w-32 bg-neutral-300'></div>
               <div className='absolute left-6 top-2 h-32 w-32 '> <img className='object-cover w-full h-full' src={customerReviews[count].image} alt="" /></div>
             </div>
-            <div className='px-2 py-6'>
+            <div className='px-2 pt-6'>
               <p className='pb-3 text-sm text-neutral-500'> "{customerReviews[count].comment}"</p>
               <StarRating rating={customerReviews[count].rating} />
               <hr className='mt-3 border-t-1 border-black w-[50%]' />
               <p className='text-xl pt-3'>{customerReviews[count].customerName}</p>
               <p>{customerReviews[count].occupation}</p>
             </div>
-          </div>
+          </div> */}
+          <div className={`relative min-h-[20rem] bg-baseColor rounded-xl shadow-lg px-4 flex flex-col justify-between items-start transition-transform duration-300 ${animation ? 'translate-x-[-2%]' : 'translate-x-0'}`}>
+  <div className=''>
+    <div className='relative mt-3 h-32 w-32 bg-neutral-300'></div>
+    <div className='absolute left-6 top-2 h-32 w-32'>
+      <img className='object-cover w-full h-full' src={customerReviews[count].image} alt="" />
+    </div>
+  </div>
+  <div className='px-2 py-6'>
+    <p className='pb-3 text-sm text-neutral-500'>"{customerReviews[count].comment}"</p>
+    <StarRating rating={customerReviews[count].rating} />
+    <hr className='mt-3 border-t-1 border-black w-[50%]' />
+    <p className='text-xl pt-3'>{customerReviews[count].customerName}</p>
+    <p>{customerReviews[count].occupation}</p>
+  </div>
+</div>
+
       </div>
       
 

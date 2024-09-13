@@ -3,8 +3,9 @@ import { setCredentials, logOut } from "../store/authSlice";
 import { RootState } from "../store/store"; // Adjust the path accordingly
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://localhost:44350/api/v1/', // This is the backend URL
-    credentials: 'include',
+    // baseUrl: `https://eskro-africa-gateway-service-qa.azurewebsites.net/api/`, 
+      baseUrl : 'https://eskro-africa-identity-service-qa.azurewebsites.net/api/', 
+    // credentials: 'include',
     prepareHeaders: (headers, { getState }) => {
         const token = (getState() as RootState).auth.token;
         if (token) {

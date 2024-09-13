@@ -1,16 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/Home';
-import SignInModal from './components/Modals/SignInModal';
-import SignUpModal from './components/Modals/SignUpModal';
+import AllRoutes from './pages/AllRoutes';
+
 
 function App() {
   return (
     <div className="">
-      <Home />
-      <SignInModal /> 
-      <SignUpModal />
+      <AllRoutes />
     </div>
   );
 }

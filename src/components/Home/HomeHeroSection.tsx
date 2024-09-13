@@ -14,7 +14,8 @@ const HomeHeroSection = () => {
                         <p className="text-sm text-neutral-400 mb-4">
                         Let Eskro Africa be your bridge between affordable and safe items.
                         </p>
-                        <Button text='Shop Now' className='w-44 bg-secondary py-4 rounded-md text-black' />
+                        
+                        <div className='w-[40%] py-2 '><Button text='Shop Now' className='w-50 bg-secondary py-4 rounded-md text-black' /></div>
                     </div>
 
                     <div className="h-[70vh] w-[70%] flex justify-center items-center overflow-hidden relative">

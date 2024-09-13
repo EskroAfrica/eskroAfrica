@@ -7,8 +7,8 @@ import { FaFire } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
 
 const Navbar = () => {
-    const loginModal = useModal('LoginModal');
-    const registerModal = useModal('SignUpModal')
+    const registerModal = useModal('RegisterModal');
+    const loginModal = useModal("LoginModal")
     
     return (
         <div className="bg-neutral-100">
@@ -31,7 +31,7 @@ const Navbar = () => {
                 {/* Sign Up and Log In - Always visible on small screens */}
                 <div className='flex sm:hidden space-x-2 items-center '>
                     <button onClick={registerModal.open} className='bg-primary px-5 py-3 rounded-lg text-xs text-white font-normal'>Register</button>
-                    <button onClick={loginModal.open} className='border border-blue-900 px-5 py-3 rounded-lg font-normal text-blue-900 text-xs'>Log In</button>
+                    <button onClick={loginModal.open}  className='border border-blue-900 px-5 py-3 rounded-lg font-normal text-blue-900 text-xs'>Log In</button>
                 </div>
             </div>
 
