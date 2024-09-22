@@ -11,6 +11,13 @@ interface SignupPayload {
   isSeller: boolean;
 }
 
+interface CreatePasswordPayload {
+  userId: string; 
+  code: string; 
+  password: string; 
+  confirmPassword: string
+}
+
 interface RefreshTokenResponse {
   accessToken: string;
 }
@@ -38,21 +45,13 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
     }),
 
-    refresh: builder.mutation<RefreshTokenResponse, void>({
-      query: () => ({
-        url: '/Auth/GetRefreshToken',
-        method: 'GET',
-      }),
-      async onQueryStarted(_, { dispatch, queryFulfilled }) {
-        try {
-          const { data } = await queryFulfilled;
-          dispatch(setCredentials({ accessToken: data.accessToken }));
-        } catch (error) {
-          console.error('Error refreshing token:', error);
-        }
-      },
+    createPassword : builder.mutation<void, CreatePasswordPayload> ({
+      query: (createPasswordData) => ({
+        url: '/users/email/confirm',
+        method: 'POST',
+        body: createPasswordData,
+      })
     }),
-
 
     logout: builder.mutation<void, void>({
       query: () => ({
@@ -75,6 +74,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
 export const {
   useLoginMutation,
   useSignupMutation,
-  useRefreshMutation,
   useLogoutMutation,
+  useCreatePasswordMutation,
 } = authApiSlice;

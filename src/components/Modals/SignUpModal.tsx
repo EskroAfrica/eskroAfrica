@@ -8,6 +8,7 @@ import { useSignupMutation } from '../../store/authApiSlice';
 const SignUpModal = () => {
     const [isRequestLoading, setIsRequestLoading] = useState(false)
     const congratulationsModal = useModal("CongratulationsModal")
+    const loginModal = useModal("LoginModal")
 
     const [signup,  { isLoading, isSuccess, isError, error }] = useSignupMutation()
 
@@ -74,16 +75,15 @@ const SignUpModal = () => {
 
         try {
             const response = await signup(formData).unwrap()
-            console.log("SignUpSuccessful")
             setIsRequestLoading(false)
-            congratulationsModal.open()
+            congratulationsModal.open() //redirect tol the congratulations modal
+            setFormData(prevState => ({ ...prevState, email: '' })); //clear form data
         } catch (error: any) {
             setIsRequestLoading(false)
             if (error?.status) {
-                console.log('Status code:', error?.status); 
-                setErrors({ ...errors, email:  error?.data?.message});
+               setErrors({ ...errors, email:  error?.data?.message});
               }
-            console.log(error)
+            
         }
     };
 
@@ -101,14 +101,14 @@ const SignUpModal = () => {
                 <div className="flex-row w-full mx-auto justify-center mt-5">
                     <form onSubmit={handleSubmit} className="w-full">
                         <input
-                           className={`w-full py-4 px-3 rounded-md border-2 ${errors.email ? 'border-red-500' : 'border-primary200'}`}
+                           className={`w-full py-4 px-3 rounded-md border-2 ${errors.email ? 'border-red-200' : 'border-primary200'}`}
                             type="email"
                             name="email"
                             placeholder="michael@ymail.com"
                             value={formData.email}
                             onChange={handleChange}
                         />
-                        {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+                        {errors.email && <p className="text-red-300 text-sm">{errors.email}</p>}
 
                         <div className="flex items-center space-x-4 px-4 py-3 text-sm">
                             <span className="text-sm">I am onboarding as</span>
@@ -156,7 +156,7 @@ const SignUpModal = () => {
 
                 <p className='w-[90%] py-6 text-neutral-500 text-sm text-center'>By continuing, you agree to our <span className='text-neutral-700 font-semibold'>Terms of Service</span>,
                     and acknowledge you've read our <span className='text-neutral-700 font-semibold'>Privacy Policy</span> </p>
-                <p className='text-sm'>Already a member, <a className='text-primary'> Log in </a></p>
+                <p onClick={loginModal.open} className='text-sm cursor-pointer'>Already a member, <a className='text-primary'> Log in </a></p>
             </div>
         </Modal>
     )

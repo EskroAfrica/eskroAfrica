@@ -2,16 +2,26 @@ import React, { useState } from 'react'
 import Button from '../Button'
 import Modal from './Modal'
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../store/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser, setCredentials } from '../../store/authSlice';
+import useModal from '../../hooks/useModal';
+
 
 const LoginModal = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [isLoading, setIsLoading] = useState(false)
+    const loginModal = useModal("LoginModal")
+    
+
+    const dispatch = useDispatch()
+    const user = useSelector(selectCurrentUser);
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
     };
+
+    const tst = {user: '', accessToken:''}
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -62,6 +72,8 @@ const LoginModal = () => {
         try {
             console.log(formData)
             setIsLoading(false)
+            // dispatch(setCredentials({ ...tst, user: "Seun Jay" }))
+            loginModal.close()
             // congratulationsModal.open()
         } catch (error) {
             console.log("Login failed")
@@ -80,7 +92,7 @@ const LoginModal = () => {
                 <div className="flex-row w-full mx-auto justify-center mt-5">
 
                     <form onSubmit={handleSubmit} className="w-full">
-                        <div className="py-2">
+                        <div className="">
                             <label htmlFor="email" className="block text-base font-medium">Email</label>
                             <input
                                 type="email"
@@ -94,7 +106,7 @@ const LoginModal = () => {
                             {errors.email && <p className="text-red-300 text-xs mt-1">{errors.email}</p>}
                         </div>
 
-                        <div className="relative py-2">
+                        <div className="relative">
                             <label htmlFor="password" className="block text-base font-medium">Password</label>
                             <input
                                 type={showPassword ? 'text' : 'password'} // Toggles between password and text type

@@ -9,6 +9,7 @@ import { FaCircleInfo } from "react-icons/fa6";
 const Navbar = () => {
     const registerModal = useModal('RegisterModal');
     const loginModal = useModal("LoginModal")
+    const congModal = useModal("CongratulationsModal")
     
     return (
         <div className="bg-neutral-100">
@@ -26,6 +27,7 @@ const Navbar = () => {
                     <p>About Us</p>
                     <button onClick={registerModal.open} className='bg-primary px-5 lg:px-16 py-3 rounded-lg text-white font-normal'>Register</button>
                     <button onClick={loginModal.open} className='border border-blue-900 px-5 lg:px-16 py-3 rounded-lg font-normal text-blue-900'>Log In</button>
+                    <button onClick={congModal.open} className='border border-blue-900 px-5 lg:px-16 py-3 rounded-lg font-normal text-blue-900'>Test</button>
                 </div>
 
                 {/* Sign Up and Log In - Always visible on small screens */}
@@ -36,7 +38,7 @@ const Navbar = () => {
             </div>
 
             {/* Fixed Bottom Navigation for Small Screens */}
-            <div className="fixed bottom-0 left-0 right-0 sm:hidden bg-white shadow-lg py-4 z-50">
+            <div className="fixed bottom-0 left-0 right-0 sm:hidden bg-white shadow-lg py-4 z-20">
                 <div className="flex justify-around items-center text-center">
                     <div className='flex flex-col justify-center items-center'> 
                     <p className='text-xl'>

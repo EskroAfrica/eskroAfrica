@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const SignInModal = () => {
     const registerModal = useModal("RegisterModal")
     const signUpModal = useModal("SignUpModal")
+    const loginModal = useModal("LoginModal")
     const [persist, setPersist] = usePersist()
     const navigate = useNavigate();
     const [shouldNavigate, setShouldNavigate] = useState(false);
@@ -41,7 +42,7 @@ const SignInModal = () => {
                 </div>
                 <p className='w-[90%] py-6 text-neutral-500 text-sm text-center'>By continuing, you agree to our <span className='text-neutral-700 font-semibold'>Terms of Service</span>, 
                 and acknowledge you've read our <span className='text-neutral-700 font-semibold'>Privacy Policy</span> </p>
-                <p className='text-sm'>Already a member, <a className='text-primary'> Log in </a></p>
+                <p onClick={loginModal.open} className='text-sm cursor-pointer'>Already a member, <a className='text-primary'> Log in </a></p>
             </div>
         </Modal>
     )

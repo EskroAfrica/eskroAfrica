@@ -20,9 +20,9 @@ const Modal: React.FC<ModalProps> = ({ modalKey, children }) => {
     if (!isOpen) return null;
   
     return (
-      <div className="fixed inset-0 flex items-start justify-center z-20 mt-32">
+      <div className="fixed inset-0 flex items-start justify-center z-50 mt-32 ">
         <div className="fixed inset-0 bg-black opacity-60" onClick={() => dispatch(closeModal())}></div>
-        <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all w-full md:w-2/3 lg:w-1/3 py-2 px-6 max-h-[80vh] overflow-y-auto">
+        <div className="bg-white rounded-lg overflow-hidden shadow-xl transform transition-all w-full md:w-2/3 lg:w-1/3 py-2 px-2 md:px-6 max-h-[80vh] overflow-y-auto">
           <button
             onClick={() => dispatch(closeModal())}
             className="absolute top-0 right-0 mt-3 mr-4 text-xl"

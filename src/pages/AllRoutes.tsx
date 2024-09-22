@@ -10,6 +10,7 @@ import Dashboard from './Dashboard'
 import usePersist from '../hooks/usePersist'
 import CongratulationsModal from '../components/Modals/CongratulationsModal'
 import LoginModal from '../components/Modals/LoginModal'
+import CreatePasswordModal from '../components/Modals/CreatePasswordModal'
 
 const AllRoutes = () => {
     const [persist] = usePersist();
@@ -36,6 +37,7 @@ const AllRoutes = () => {
       <SignUpModal />
       <CongratulationsModal />
       <LoginModal /> 
+      <CreatePasswordModal/>
     </>
   )
 }
