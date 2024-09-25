@@ -22,6 +22,32 @@ export interface Category {
     subCategories: SubCategory[];  // Array of SubCategory
 }
 
+export enum ProductStatus {
+    Available = 0,
+    Unavailable = 1, 
+    SoldOut = 2
+  }
+  
+  export interface Product {
+    id: string;
+    createdDate: string;
+    name: string;
+    description: string;
+    additionalInformation: string;
+    price: number;
+    condition: number;
+    state: string;
+    city: string;
+    status: number;
+    categoryId: string;
+    subCategoryId: string;
+    featuredImage: string;
+    quantity: number;
+    images: string[];
+  }
+
+
+
 
 export const productApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
