@@ -5,11 +5,15 @@ import { IoHomeSharp } from "react-icons/io5";
 import { AiFillProduct } from "react-icons/ai";
 import { FaFire } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../store/authSlice';
 
 const Navbar = () => {
     const registerModal = useModal('RegisterModal');
     const loginModal = useModal("LoginModal")
-    const congModal = useModal("CongratulationsModal")
+    const user = useSelector(selectCurrentUser);
+    // console.log(user)
     
     return (
         <div className="bg-neutral-100">
@@ -20,14 +24,13 @@ const Navbar = () => {
 
                 {/* Main Navigation Links - Hidden on small screens */}
                 <div className='hidden sm:flex justify-end space-x-2 lg:space-x-4 font-medium items-center basis-4/5 text-sm lg:text-base'>
-                    <p>Home</p>
-                    <p>All Products</p>
+                    <Link to={'dashboard'}>Home</Link>
+                    <Link to={'changepassword'}>All Products</Link>
                     <p>Hot Bids</p>
                     <p>New Products</p>
                     <p>About Us</p>
                     <button onClick={registerModal.open} className='bg-primary px-5 lg:px-16 py-3 rounded-lg text-white font-normal'>Register</button>
                     <button onClick={loginModal.open} className='border border-blue-900 px-5 lg:px-16 py-3 rounded-lg font-normal text-blue-900'>Log In</button>
-                    <button onClick={congModal.open} className='border border-blue-900 px-5 lg:px-16 py-3 rounded-lg font-normal text-blue-900'>Test</button>
                 </div>
 
                 {/* Sign Up and Log In - Always visible on small screens */}

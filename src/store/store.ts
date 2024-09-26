@@ -4,7 +4,7 @@ import itemsReducer from './itemsSlice';
 import customerReducer from './customerReviewsSlice'
 import modalReducer from './modalsSlice'
 import authReducer from './authSlice'
-import { apiSlice } from './apiSlice';
+import { apiSlice, identityApiSlice } from './apiSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +13,7 @@ export const store = configureStore({
     modals: modalReducer, 
     auth: authReducer, 
     [apiSlice.reducerPath] : apiSlice.reducer,
+    [identityApiSlice.reducerPath]: identityApiSlice.reducer
   },
   middleware: getDefaultMiddleware => 
     getDefaultMiddleware().concat(apiSlice.middleware), 

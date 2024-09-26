@@ -2,19 +2,21 @@ import React, { useState } from 'react'
 import Button from '../Button'
 import Modal from './Modal'
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { selectCurrentUser, setCredentials } from '../../store/authSlice';
 import useModal from '../../hooks/useModal';
+import { Credentials, useLoginMutation } from '../../store/authApiSlice';
 
 
 const LoginModal = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [isLoading, setIsLoading] = useState(false)
+    const [isRequestLoading, setIsRequestLoading] = useState(false)
     const loginModal = useModal("LoginModal")
+    const [login,  { isLoading, isSuccess, isError, error }] = useLoginMutation()
     
 
     const dispatch = useDispatch()
-    const user = useSelector(selectCurrentUser);
+    
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
@@ -67,17 +69,39 @@ const LoginModal = () => {
             return;
         }
         // Submit form data
-        setIsLoading(true)
+        setIsRequestLoading(true)
 
         try {
-            console.log(formData)
-            setIsLoading(false)
+            var payload: Credentials = {
+                username: formData.email, 
+                password: formData.password, 
+                grant_type: "password", 
+                client_id: "WebClient",
+                client_secret: "default-secret"
+            }
+            console.log(payload)
+            const response = await login(payload).unwrap()
+            console.log(response.access_token)
+         
+            // loginModal.open()
+            // setIsRequestLoading(false)
             // dispatch(setCredentials({ ...tst, user: "Seun Jay" }))
-            loginModal.close()
             // congratulationsModal.open()
-        } catch (error) {
-            console.log("Login failed")
+        } catch (error:any) {
+            setIsRequestLoading(false)
+            if (error?.status) {
+              console.log(error?.status)
+              }
         }
+
+        // try {
+        //     console.log(formData)
+        //     setIsRequestLoading(false)
+        //     dispatch(setCredentials({ ...tst, user: "Seun Jay" }))
+        //     loginModal.close()
+        // } catch (error) {
+        //     console.log("Login failed")
+        // }
     };
 
     return (
@@ -135,7 +159,7 @@ const LoginModal = () => {
                             <Button
                                 text="Log In"
                                 className="mt-4 bg-primary text-baseColor px-10 mx-auto py-4 rounded-lg"
-                                type="submit" isLoading={isLoading}
+                                type="submit" isLoading={isRequestLoading}
                             />
                         </div>
                     </form>
