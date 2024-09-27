@@ -7,7 +7,7 @@ const PersistLogin = () => {
 
     if(!persist) {
         return (
-           <Navigate to={'/'} />
+           <Navigate to='/' replace />
           )
     }
     return <Outlet />

@@ -115,8 +115,6 @@ const CreatePasswordModal = () => {
             const response = await createPassword(confirmEmailPayload).unwrap()
             loginModal.open()
             setIsRequestLoading(false)
-            // dispatch(setCredentials({ ...tst, user: "Seun Jay" }))
-            // congratulationsModal.open()
         } catch (error:any) {
             setIsRequestLoading(false)
             if (error?.status) {

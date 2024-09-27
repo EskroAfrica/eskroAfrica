@@ -1,11 +1,14 @@
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import Button from '../Button'
 import Modal from './Modal'
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useDispatch} from 'react-redux';
-import { selectCurrentUser, setCredentials } from '../../store/authSlice';
+import { selectCurrentUser, setCredentials, SetCredentialsPayload } from '../../store/authSlice';
 import useModal from '../../hooks/useModal';
 import { Credentials, useLoginMutation } from '../../store/authApiSlice';
+import { jwtDecode } from 'jwt-decode';
+import usePersist from '../../hooks/usePersist';
 
 
 const LoginModal = () => {
@@ -16,13 +19,12 @@ const LoginModal = () => {
     
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const [persist, setPersist] = usePersist()
     
-
     const togglePasswordVisibility = () => {
         setShowPassword((prevState) => !prevState);
     };
-
-    const tst = {user: '', accessToken:''}
 
     const [formData, setFormData] = useState({
         email: '',
@@ -79,29 +81,22 @@ const LoginModal = () => {
                 client_id: "WebClient",
                 client_secret: "default-secret"
             }
-            console.log(payload)
             const response = await login(payload).unwrap()
-            console.log(response.access_token)
-         
-            // loginModal.open()
-            // setIsRequestLoading(false)
-            // dispatch(setCredentials({ ...tst, user: "Seun Jay" }))
-            // congratulationsModal.open()
+            const decoded: any = jwtDecode(response.access_token);
+            const credentialPayload: SetCredentialsPayload = {user: decoded.email, accessToken: response.access_token, refreshToken: response.refresh_token}
+            dispatch(setCredentials(credentialPayload))
+            loginModal.close()
+            setPersist(true)
+             // Immediately set localStorage directly to avoid timing issues
+    localStorage.setItem('persist', JSON.stringify(true));
+            navigate('/dashboard', { replace: true })
         } catch (error:any) {
             setIsRequestLoading(false)
             if (error?.status) {
-              console.log(error?.status)
+              setErrors({ ...errors, email:  error?.data?.error});
               }
         }
 
-        // try {
-        //     console.log(formData)
-        //     setIsRequestLoading(false)
-        //     dispatch(setCredentials({ ...tst, user: "Seun Jay" }))
-        //     loginModal.close()
-        // } catch (error) {
-        //     console.log("Login failed")
-        // }
     };
 
     return (

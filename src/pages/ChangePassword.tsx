@@ -128,18 +128,7 @@ const ChangePassword = () => {
         const searchParams = new URLSearchParams(location.search);
         const code = searchParams.get('code');
         const userId = searchParams.get('userId');
-    
-        if (code && userId) {
-          console.log('User ID:', userId);
-          console.log('Code:', code);
-          // Here you would typically validate the code and userId
-          // If invalid, you might redirect to an error page
-        } else {
-          // If code or userId is missing, you might want to handle this case
-          console.log('Missing code or userId');
-          // Optionally redirect or show an error message
-          // navigate('/changepassword');
-        }
+
       }, [location, navigate]);
 
     return (
