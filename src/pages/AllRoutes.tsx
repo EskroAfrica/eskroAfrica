@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar/Navbar'
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import PersistLogin from '../store/PersistLogin'
 import Home from './Home'

@@ -4,7 +4,7 @@ import Button from '../Button'
 import Modal from './Modal'
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
 import { useDispatch} from 'react-redux';
-import { selectCurrentUser, setCredentials, SetCredentialsPayload } from '../../store/authSlice';
+import { setCredentials, SetCredentialsPayload } from '../../store/authSlice';
 import useModal from '../../hooks/useModal';
 import { Credentials, useLoginMutation } from '../../store/authApiSlice';
 import { jwtDecode } from 'jwt-decode';
@@ -88,7 +88,7 @@ const LoginModal = () => {
             loginModal.close()
             setPersist(true)
              // Immediately set localStorage directly to avoid timing issues
-    localStorage.setItem('persist', JSON.stringify(true));
+            localStorage.setItem('persist', JSON.stringify(true));
             navigate('/dashboard', { replace: true })
         } catch (error:any) {
             setIsRequestLoading(false)

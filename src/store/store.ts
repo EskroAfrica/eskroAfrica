@@ -4,6 +4,7 @@ import itemsReducer from './itemsSlice';
 import customerReducer from './customerReviewsSlice'
 import modalReducer from './modalsSlice'
 import authReducer from './authSlice'
+import userDetailsReducer from './userDetailsSlice'
 import { apiSlice, identityApiSlice } from './apiSlice';
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     customerReviews: customerReducer, 
     modals: modalReducer, 
     auth: authReducer, 
+    userDetails: userDetailsReducer, 
     [apiSlice.reducerPath] : apiSlice.reducer,
     [identityApiSlice.reducerPath]: identityApiSlice.reducer
   },

@@ -5,7 +5,7 @@ import { RootState } from "../store/store";
 interface AuthState {
   user: string | null; 
   token: string | null;
-  refreshToken: string|null
+  refreshToken: string | null
 }
 
 // Define the initial state using the AuthState type
@@ -54,6 +54,6 @@ export const { setCredentials, logOut } = authSlice.actions;
 export default authSlice.reducer;
 
 // Selector types
-export const selectCurrentUser = (state: RootState): string | null => state.auth.user;
+// export const selectCurrentUser = (state: RootState): string | null => state.auth.user;
 export const selectCurrentToken = (state: RootState): string | null => state.auth.token;
 export const selectRefreshToken = (state:RootState): string| null => state.auth.refreshToken;
