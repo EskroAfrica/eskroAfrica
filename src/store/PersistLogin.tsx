@@ -35,7 +35,10 @@ const PersistLogin = () => {
             <Navigate to='/' replace />
         )
     } else {
-        return <Outlet />
+        return (
+        <div className='flex-grow'>
+            <Outlet />
+        </div>) 
     }
 
 

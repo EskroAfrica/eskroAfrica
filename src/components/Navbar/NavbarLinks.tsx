@@ -13,7 +13,7 @@ const NavbarLinks = () => {
         <>
             {!user &&
                 <div className='flex justify-between items-center basis-1/5'>
-                    <img className='' src={esk} alt="Logo" />
+                    <img className='h-12' src={esk} alt="Logo" />
                 </div>
             }
             {/* Main Navigation Links - Hidden on small screens */}

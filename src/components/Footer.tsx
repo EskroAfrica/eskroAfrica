@@ -4,7 +4,7 @@ import esk from '../assets/Frame7.png'
 const Footer = () => {
   const tags = ["Game", "iPhone", "TV", "Asus Laptop", "Macbook", "SSD", "Graphics Card", "Power Bank", "Smart TV", "Speaker", "Tablet", "Microwave", "Samsung"]
   return (
-    <div className="bg-primary py-10">
+    <div className="bg-primary py-10 ">
       <div className='sm:flex justify-between w-[95%] mx-auto text-white'>
         <div className="basis-1/5 mb-5">
         <img className='' src={esk} alt="" />

@@ -12,6 +12,7 @@ import CongratulationsModal from '../components/Modals/CongratulationsModal'
 import LoginModal from '../components/Modals/LoginModal'
 import CreatePasswordModal from '../components/Modals/CreatePasswordModal'
 import ChangePassword from './ChangePassword'
+import Products from './Products'
 
 const AllRoutes = () => {
     const [persist] = usePersist();
@@ -26,13 +27,14 @@ const AllRoutes = () => {
       }, [persist, navigate, location]);
 
   return (
-    <>
+    <div className='flex flex-col min-h-screen'>
     <Navbar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/changepassword' element={<ChangePassword />} />
         <Route element={<PersistLogin />}>
           <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/products/:name' element={<Products/>}/>
         </Route>
       </Routes>
       <Footer />
@@ -41,7 +43,7 @@ const AllRoutes = () => {
       <CongratulationsModal />
       <LoginModal /> 
       <CreatePasswordModal/>
-    </>
+    </div>
   )
 }
 
