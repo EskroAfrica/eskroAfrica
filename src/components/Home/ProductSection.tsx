@@ -40,10 +40,6 @@ const ProductSection = () => {
   };
 
 
-  const handleDelete = (id: number) => {
-    dispatch(deleteItem(id));
-  };
-
   const fetchProducts = async () => {
     try {
       const payload: GetProductPayload = {
@@ -141,7 +137,7 @@ const ProductSection = () => {
                 {/* <StarRating rating={items[count]?.rating} /> */}
                 <p className='font-medium py-2'>{products[count]?.state}</p>
                 <div className='flex justify-between items-end'>
-                  <p className='text-2xl font-medium'>N {items[count]?.price.toFixed(2)}</p>
+                  <p className='text-2xl font-medium'>N {products[count]?.price.toFixed(2)}</p>
                   <p className='text-sm text-error200'>{products[count]?.status}</p>
                 </div>
               </div>

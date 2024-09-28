@@ -11,7 +11,7 @@ import AuthNavbarLinks from './AuthNavbarLinks';
 const Navbar = () => {
     
     return (
-        <div className="bg-neutral-100">
+        <div className="bg-neutral-100 py-3">
             <div className='flex justify-between items-center sf-font w-[95%] mx-auto '>
                <NavbarLinks />
                <AuthNavbarLinks/>
