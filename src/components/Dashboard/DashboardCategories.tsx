@@ -23,13 +23,12 @@ const DashboardCategories = () => {
       }
 
       useEffect(() => {
-        // fetchProducts()
         fetchCategories()
       }, []);
 
   return (
     <>
-      {isLoading ? 
+      {(isLoading) ? 
 
         (<Loader />) :   
         
