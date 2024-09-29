@@ -11,7 +11,8 @@ interface MyComponentProps {
 const DashboardProducts: React.FC<MyComponentProps> = ({ id }) => {
   const [getProducts, { isLoading, isSuccess, isError, error }] = useGetProductsMutation()
   const [products, setProducts] = useState<Product[]>([]);
-
+ 
+ 
 
   const fetchProducts = async () => {
     try {
@@ -23,6 +24,7 @@ const DashboardProducts: React.FC<MyComponentProps> = ({ id }) => {
       const response = await getProducts(payload).unwrap()
       const products: Product[] = response?.data || []
       setProducts(products)
+      console.log(products)
     } catch (error: any) {
       if (error?.status) {
         // console.log(error?.status)
@@ -36,7 +38,7 @@ const DashboardProducts: React.FC<MyComponentProps> = ({ id }) => {
 
   return (
     <>
-      {isLoading ?
+      {products.length == 0  ?
 
         (<Loader />)
 
