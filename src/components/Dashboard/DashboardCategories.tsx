@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Category, useGetCategoriesMutation } from '../../store/productApiSlice'
 import DashboardProducts from './DashboardProducts'
 import { Link } from 'react-router-dom'
+import Loader from '../Loader'
 
 const DashboardCategories = () => {
     const [categories, setCategories] = useState<Category[]>([])
 
-  const [getCategories] = useGetCategoriesMutation()
+  const [getCategories, { isLoading, isSuccess, isError, error }] = useGetCategoriesMutation()
 
 
     const fetchCategories = async () => {
@@ -27,7 +28,12 @@ const DashboardCategories = () => {
       }, []);
 
   return (
-    <div className='w-[90%] mx-auto'>
+    <>
+      {isLoading ? 
+
+        (<Loader />) :   
+        
+        <div className='w-[90%] mx-auto'>
         {categories.map((item, index) => (
             <div key={index}>
                 <div className='flex justify-between items-center border-b border-neutral-300'>
@@ -39,6 +45,9 @@ const DashboardCategories = () => {
         ))}
 
     </div>
+    }
+    </>
+
   )
 }
 

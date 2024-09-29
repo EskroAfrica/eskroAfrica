@@ -15,8 +15,8 @@ const PaginatedComponent: React.FC<MyComponentProps> = ({ name, categoryId }) =>
     const [products, setProducts] = useState<Product[]>([]);
     const [totalItems, setTotalItems] = useState<number>(0);
     const [currentPage, setCurrentPage] = useState<number>(1);
-    const [error, setError] = useState<string | null>(null);
-    const [getProducts, { isLoading }] = useGetProductsMutation()
+    // const [error, setError] = useState<string | null>(null);
+    const [getProducts, { isLoading, isSuccess, isError, error }] = useGetProductsMutation()
 
 
     const fetchProducts = async (pageNumber: number) => {
@@ -27,9 +27,9 @@ const PaginatedComponent: React.FC<MyComponentProps> = ({ name, categoryId }) =>
                 pageSize: 12
             };
             const response = await getProducts(payload).unwrap()
+            console.log(isSuccess)
             const products: Product[] = response?.data || []
             setTotalItems(response?.totalCount)
-            setProducts(products)
         } catch (error: any) {
             if (error?.status) {
                 console.log(error?.status)
@@ -61,7 +61,7 @@ const PaginatedComponent: React.FC<MyComponentProps> = ({ name, categoryId }) =>
                     <p className='text-2xl text-primary font-semibold border-b-2 border-primary'> {name}</p>
                 </div>
 
-            {isLoading ?
+            {isLoading && !isError ?
 
                 (<Loader />)
 
